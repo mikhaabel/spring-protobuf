@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package techtalks;
+
+option java_package = "com.techtalks.springprotobuf";
+option java_outer_classname = "OfferProtobuf";
+
+message Envelope {
+	int32 id = 1;
+	string description = 2;
+	repeated Offer offer = 3;
+}
+
+message Offer {
+	int32 id = 1;
+	string small_description = 2;
+	string large_description = 3;
+	string reply = 4;
+	repeated CallToAction cta = 5;
+
+	message CallToAction {
+		string text = 1;
+		CallToActionType type = 2;
+	}
+
+	enum CallToActionType {
+		CALL = 0;
+		CONTACT_US = 1;
+	}
+}
